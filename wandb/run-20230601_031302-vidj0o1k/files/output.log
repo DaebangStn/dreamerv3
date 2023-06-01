@@ -1,0 +1,296 @@
+Encoder CNN shapes: {'image': (64, 64, 3)}
+Encoder MLP shapes: {}
+Decoder CNN shapes: {'image': (64, 64, 3)}
+Decoder MLP shapes: {}
+JAX devices (1): [StreamExecutorGpuDevice(id=0, process_index=0, slice_index=0)]
+Policy devices: gpu:0
+Train devices:  gpu:0
+Tracing train function.
+Optimizer model_opt has 32,468,675 variables.
+Optimizer actor_opt has 2,144,657 variables.
+Optimizer critic_opt has 2,297,215 variables.
+Logdir /root/logdir/run1
+Observation space:
+  image            Space(dtype=uint8, shape=(64, 64, 3), low=0, high=255)
+  reward           Space(dtype=float32, shape=(), low=-inf, high=inf)
+  is_first         Space(dtype=bool, shape=(), low=False, high=True)
+  is_last          Space(dtype=bool, shape=(), low=False, high=True)
+  is_terminal      Space(dtype=bool, shape=(), low=False, high=True)
+Action space:
+  action           Space(dtype=float32, shape=(17,), low=0, high=1)
+  reset            Space(dtype=bool, shape=(), low=False, high=True)
+Prefill train dataset.
+Found existing checkpoint.
+Loading checkpoint: /root/logdir/run1/checkpoint.ckpt
+Loaded checkpoint from 2139 seconds ago.
+Start training loop.
+Tracing policy function.
+Tracing policy function.
+Tracing train function.
+Traceback (most recent call last):
+  File "example.py", line 53, in <module>
+    main()
+  File "example.py", line 48, in main
+    embodied.run.train(agent, env, replay, logger, args)
+  File "/embodied/dreamerv3/embodied/run/train.py", line 108, in train
+    driver(policy, steps=100)
+  File "/embodied/dreamerv3/embodied/core/driver.py", line 42, in __call__
+    step, episode = self._step(policy, step, episode)
+  File "/embodied/dreamerv3/embodied/core/driver.py", line 65, in _step
+    [fn(trn, i, **self._kwargs) for fn in self._on_steps]
+  File "/embodied/dreamerv3/embodied/core/driver.py", line 65, in <listcomp>
+    [fn(trn, i, **self._kwargs) for fn in self._on_steps]
+  File "/embodied/dreamerv3/embodied/run/train.py", line 76, in train_step
+    outs, state[0], mets = agent.train(batch[0], state[0])
+  File "/usr/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/embodied/dreamerv3/jaxagent.py", line 72, in train
+    (outs, state, mets), self.varibs = self._train(
+  File "/embodied/dreamerv3/ninjax.py", line 208, in wrapper
+    out, updated = apply(statics, selected, rng, *args, **kw)
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/traceback_util.py", line 166, in reraise_with_filtered_traceback
+    return fun(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/pjit.py", line 238, in cache_miss
+    outs, out_flat, out_tree, args_flat = _python_pjit_helper(
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/pjit.py", line 185, in _python_pjit_helper
+    out_flat = pjit_p.bind(*args_flat, **params)
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/core.py", line 2592, in bind
+    return self.bind_with_trace(top_trace, args, params)
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/core.py", line 363, in bind_with_trace
+    out = trace.process_primitive(self, map(trace.full_raise, args), params)
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/core.py", line 817, in process_primitive
+    return primitive.impl(*tracers, **params)
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/pjit.py", line 1229, in _pjit_call_impl
+    compiled = _pjit_lower(
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/interpreters/pxla.py", line 2816, in compile
+    self._executable = UnloadedMeshExecutable.from_hlo(
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/interpreters/pxla.py", line 3028, in from_hlo
+    xla_executable = dispatch.compile_or_get_cached(
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/dispatch.py", line 526, in compile_or_get_cached
+    return backend_compile(backend, serialized_computation, compile_options,
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/profiler.py", line 314, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/jax/_src/dispatch.py", line 471, in backend_compile
+    return backend.compile(built_c, compile_options=options)
+KeyboardInterrupt
+[31m╭──────────────────────────── [39m[1mTraceback (most recent call last)[31m[22m ─────────────────────────────╮
+[31m│[39m /embodied/[1mexample.py[22m:[94m53[39m in [92m<module>[39m                                                        [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   50                                                                                       [31m│
+[31m│[39m   51                                                                                       [31m│
+[31m│[39m   52 [94mif[39m [91m__name__[39m == [33m'__main__'[39m:                                                            [31m│
+[31m│[39m [31m❱ [39m53   main()                                                                              [31m│
+[31m│[39m   54                                                                                       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/[1mexample.py[22m:[94m48[39m in [92mmain[39m                                                            [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   45   args = embodied.Config(                                                             [31m│
+[31m│[39m   46 │     **config.run, logdir=config.logdir,                                             [31m│
+[31m│[39m   47 │     batch_steps=config.batch_size * config.batch_length)                            [31m│
+[31m│[39m [31m❱ [39m48   embodied.run.train(agent, env, replay, logger, args)                                [31m│
+[31m│[39m   49   # embodied.run.eval_only(agent, env, logger, args)                                  [31m│
+[31m│[39m   50                                                                                       [31m│
+[31m│[39m   51                                                                                       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/run/[1mtrain.py[22m:[94m108[39m in [92mtrain[39m                                     [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   105   policy = [94mlambda[39m *args: agent.policy(                                               [31m│
+[31m│[39m   106 │     *args, mode=[33m'explore'[39m [94mif[39m should_expl(step) [94melse[39m [33m'train'[39m)                       [31m│
+[31m│[39m   107   [94mwhile[39m step < args.steps:                                                           [31m│
+[31m│[39m [31m❱ [39m108 │   driver(policy, steps=[94m100[39m)                                                        [31m│
+[31m│[39m   109 │   [94mif[39m should_save(step):                                                            [31m│
+[31m│[39m   110 │     checkpoint.save()                                                              [31m│
+[31m│[39m   111   logger.write()                                                                     [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/core/[1mdriver.py[22m:[94m42[39m in [92m__call__[39m                                 [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   39   [94mdef[39m [92m__call__[39m([96mself[39m, policy, steps=[94m0[39m, episodes=[94m0[39m):                                    [31m│
+[31m│[39m   40 │   step, episode = [94m0[39m, [94m0[39m                                                              [31m│
+[31m│[39m   41 │   [94mwhile[39m step < steps [95mor[39m episode < episodes:                                         [31m│
+[31m│[39m [31m❱ [39m42 │     step, episode = [96mself[39m._step(policy, step, episode)                               [31m│
+[31m│[39m   43                                                                                       [31m│
+[31m│[39m   44   [94mdef[39m [92m_step[39m([96mself[39m, policy, step, episode):                                             [31m│
+[31m│[39m   45 │   [94massert[39m [96mall[39m([96mlen[39m(x) == [96mlen[39m([96mself[39m._env) [94mfor[39m x [95min[39m [96mself[39m._acts.values())                 [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/core/[1mdriver.py[22m:[94m65[39m in [92m_step[39m                                    [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   62 │   [94mfor[39m i [95min[39m [96mrange[39m([96mlen[39m([96mself[39m._env)):                                                   [31m│
+[31m│[39m   63 │     trn = {k: v[i] [94mfor[39m k, v [95min[39m trns.items()}                                        [31m│
+[31m│[39m   64 │     [[96mself[39m._eps[i][k].append(v) [94mfor[39m k, v [95min[39m trn.items()]                             [31m│
+[31m│[39m [31m❱ [39m65 │     [fn(trn, i, **[96mself[39m._kwargs) [94mfor[39m fn [95min[39m [96mself[39m._on_steps]                           [31m│
+[31m│[39m   66 │     step += [94m1[39m                                                                       [31m│
+[31m│[39m   67 │   [94mif[39m obs[[33m'is_last'[39m].any():                                                          [31m│
+[31m│[39m   68 │     [94mfor[39m i, done [95min[39m [96menumerate[39m(obs[[33m'is_last'[39m]):                                       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/core/[1mdriver.py[22m:[94m65[39m in [92m<listcomp>[39m                               [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   62 │   [94mfor[39m i [95min[39m [96mrange[39m([96mlen[39m([96mself[39m._env)):                                                   [31m│
+[31m│[39m   63 │     trn = {k: v[i] [94mfor[39m k, v [95min[39m trns.items()}                                        [31m│
+[31m│[39m   64 │     [[96mself[39m._eps[i][k].append(v) [94mfor[39m k, v [95min[39m trn.items()]                             [31m│
+[31m│[39m [31m❱ [39m65 │     [fn(trn, i, **[96mself[39m._kwargs) [94mfor[39m fn [95min[39m [96mself[39m._on_steps]                           [31m│
+[31m│[39m   66 │     step += [94m1[39m                                                                       [31m│
+[31m│[39m   67 │   [94mif[39m obs[[33m'is_last'[39m].any():                                                          [31m│
+[31m│[39m   68 │     [94mfor[39m i, done [95min[39m [96menumerate[39m(obs[[33m'is_last'[39m]):                                       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/run/[1mtrain.py[22m:[94m76[39m in [92mtrain_step[39m                                 [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m    73 │   [94mfor[39m _ [95min[39m [96mrange[39m(should_train(step)):                                              [31m│
+[31m│[39m    74 │     [94mwith[39m timer.scope([33m'dataset'[39m):                                                   [31m│
+[31m│[39m    75 │   │   batch[[94m0[39m] = [96mnext[39m(dataset)                                                     [31m│
+[31m│[39m [31m❱ [39m 76 │     outs, state[[94m0[39m], mets = agent.train(batch[[94m0[39m], state[[94m0[39m])                         [31m│
+[31m│[39m    77 │     metrics.add(mets, prefix=[33m'train'[39m)                                              [31m│
+[31m│[39m    78 │     [94mif[39m [33m'priority'[39m [95min[39m outs:                                                         [31m│
+[31m│[39m    79 │   │   replay.prioritize(outs[[33m'key'[39m], outs[[33m'priority'[39m])                             [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/lib/python3.8/[1mcontextlib.py[22m:[94m75[39m in [92minner[39m                                               [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m    72 │   │   [1m@wraps[22m(func)                                                                 [31m│
+[31m│[39m    73 │   │   [94mdef[39m [92minner[39m(*args, **kwds):                                                    [31m│
+[31m│[39m    74 │   │   │   [94mwith[39m [96mself[39m._recreate_cm():                                                [31m│
+[31m│[39m [31m❱ [39m 75 │   │   │   │   [94mreturn[39m func(*args, **kwds)                                           [31m│
+[31m│[39m    76 │   │   [94mreturn[39m inner                                                                 [31m│
+[31m│[39m    77                                                                                      [31m│
+[31m│[39m    78                                                                                      [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/[1mjaxagent.py[22m:[94m72[39m in [92mtrain[39m                                                [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m    69 │   rng = [96mself[39m._next_rngs([96mself[39m.train_devices)                                        [31m│
+[31m│[39m    70 │   [94mif[39m state [95mis[39m [94mNone[39m:                                                                [31m│
+[31m│[39m    71 │     state, [96mself[39m.varibs = [96mself[39m._init_train([96mself[39m.varibs, rng, data[[33m'is_first'[39m])      [31m│
+[31m│[39m [31m❱ [39m 72 │   (outs, state, mets), [96mself[39m.varibs = [96mself[39m._train(                                  [31m│
+[31m│[39m    73 │   │   [96mself[39m.varibs, rng, data, state)                                               [31m│
+[31m│[39m    74 │   outs = [96mself[39m._convert_outs(outs, [96mself[39m.train_devices)                              [31m│
+[31m│[39m    75 │   [96mself[39m._updates.increment()                                                        [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/[1mninjax.py[22m:[94m208[39m in [92mwrapper[39m                                               [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   205 │     [94mreturn[39m state                                                                   [31m│
+[31m│[39m   206 │   [94melse[39m:                                                                            [31m│
+[31m│[39m   207 │     selected = {k: v [94mfor[39m k, v [95min[39m state.items() [94mif[39m k [95min[39m wrapper.keys}               [31m│
+[31m│[39m [31m❱ [39m208 │     out, updated = apply(statics, selected, rng, *args, **kw)                      [31m│
+[31m│[39m   209 │     [94mreturn[39m out, {**state, **updated}                                               [31m│
+[31m│[39m   210   [94mreturn[39m wrapper                                                                     [31m│
+[31m│[39m   211                                                                                      [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/[1mtraceback_util.py[22m:[94m166[39m in                   [31m│
+[31m│[39m [92mreraise_with_filtered_traceback[39m                                                            [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   163   [94mdef[39m [92mreraise_with_filtered_traceback[39m(*args, **kwargs):                              [31m│
+[31m│[39m   164 │   __tracebackhide__ = [94mTrue[39m                                                         [31m│
+[31m│[39m   165 │   [94mtry[39m:                                                                             [31m│
+[31m│[39m [31m❱ [39m166 │     [94mreturn[39m fun(*args, **kwargs)                                                    [31m│
+[31m│[39m   167 │   [94mexcept[39m [96mException[39m [94mas[39m e:                                                           [31m│
+[31m│[39m   168 │     mode = _filtering_mode()                                                       [31m│
+[31m│[39m   169 │     [94mif[39m _is_under_reraiser(e) [95mor[39m mode == [33m"off"[39m:                                     [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/[1mpjit.py[22m:[94m238[39m in [92mcache_miss[39m                  [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m    235                                                                                     [31m│
+[31m│[39m    236   [1m@api_boundary[22m                                                                     [31m│
+[31m│[39m    237   [94mdef[39m [92mcache_miss[39m(*args, **kwargs):                                                  [31m│
+[31m│[39m [31m❱ [39m 238 │   outs, out_flat, out_tree, args_flat = _python_pjit_helper(                      [31m│
+[31m│[39m    239 │   │   fun, infer_params_fn, *args, **kwargs)                                      [31m│
+[31m│[39m    240 │                                                                                   [31m│
+[31m│[39m    241 │   executable = _read_most_recent_pjit_call_executable()                           [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/[1mpjit.py[22m:[94m185[39m in [92m_python_pjit_helper[39m         [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m    182   [94mfor[39m arg [95min[39m args_flat:                                                             [31m│
+[31m│[39m    183 │   dispatch.check_arg(arg)                                                         [31m│
+[31m│[39m    184   [94mtry[39m:                                                                              [31m│
+[31m│[39m [31m❱ [39m 185 │   out_flat = pjit_p.bind(*args_flat, **params)                                    [31m│
+[31m│[39m    186   [94mexcept[39m pxla.DeviceAssignmentMismatchError [94mas[39m e:                                   [31m│
+[31m│[39m    187 │   fails, = e.args                                                                 [31m│
+[31m│[39m    188 │   api_name = [33m'jit'[39m [94mif[39m params[[33m'resource_env'[39m] [95mis[39m [94mNone[39m [94melse[39m [33m'pjit'[39m                  [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/[1mcore.py[22m:[94m2592[39m in [92mbind[39m                       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   2589 │   │   │   │   │   default=[94mNone[39m, key=[94mlambda[39m t: [96mgetattr[39m(t, [33m'level'[39m, -[94m1[39m))            [31m│
+[31m│[39m   2590 │   top_trace = (top_trace [94mif[39m [95mnot[39m axis_main [95mor[39m axis_main.level < top_trace.level    [31m│
+[31m│[39m   2591 │   │   │   │    [94melse[39m axis_main.with_cur_sublevel())                                [31m│
+[31m│[39m [31m❱ [39m2592 │   [94mreturn[39m [96mself[39m.bind_with_trace(top_trace, args, params)                            [31m│
+[31m│[39m   2593                                                                                     [31m│
+[31m│[39m   2594                                                                                     [31m│
+[31m│[39m   2595 # ------------------- Jaxpr checking -------------------                            [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/[1mcore.py[22m:[94m363[39m in [92mbind_with_trace[39m             [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m    360 │   [94mreturn[39m [96mself[39m.bind_with_trace(find_top_trace(args), args, params)                 [31m│
+[31m│[39m    361                                                                                     [31m│
+[31m│[39m    362   [94mdef[39m [92mbind_with_trace[39m([96mself[39m, trace, args, params):                                   [31m│
+[31m│[39m [31m❱ [39m 363 │   out = trace.process_primitive([96mself[39m, [96mmap[39m(trace.full_raise, args), params)        [31m│
+[31m│[39m    364 │   [94mreturn[39m [96mmap[39m(full_lower, out) [94mif[39m [96mself[39m.multiple_results [94melse[39m full_lower(out)       [31m│
+[31m│[39m    365                                                                                     [31m│
+[31m│[39m    366   [94mdef[39m [92mdef_impl[39m([96mself[39m, impl):                                                         [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/[1mcore.py[22m:[94m817[39m in [92mprocess_primitive[39m           [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m    814   lift = sublift = pure                                                             [31m│
+[31m│[39m    815                                                                                     [31m│
+[31m│[39m    816   [94mdef[39m [92mprocess_primitive[39m([96mself[39m, primitive, tracers, params):                          [31m│
+[31m│[39m [31m❱ [39m 817 │   [94mreturn[39m primitive.impl(*tracers, **params)                                       [31m│
+[31m│[39m    818                                                                                     [31m│
+[31m│[39m    819   [94mdef[39m [92mprocess_call[39m([96mself[39m, primitive, f, tracers, params):                            [31m│
+[31m│[39m    820 │   [94mreturn[39m primitive.impl(f, *tracers, **params)                                    [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/[1mpjit.py[22m:[94m1229[39m in [92m_pjit_call_impl[39m            [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   1226 │     resource_env.physical_mesh [94mif[39m resource_env [95mis[39m [95mnot[39m [94mNone[39m [94melse[39m [94mNone[39m)             [31m│
+[31m│[39m   1227                                                                                     [31m│
+[31m│[39m   1228   _allow_propagation_to_outputs = [_is_unspecified(o) [94mfor[39m o [95min[39m out_shardings]       [31m│
+[31m│[39m [31m❱ [39m1229   compiled = _pjit_lower(                                                           [31m│
+[31m│[39m   1230 │     jaxpr, in_shardings, out_shardings, resource_env,                             [31m│
+[31m│[39m   1231 │     donated_invars, name, keep_unused,                                            [31m│
+[31m│[39m   1232 │     always_lower=[94mFalse[39m, lowering_platform=[94mNone[39m).compile(                          [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/interpreters/[1mpxla.py[22m:[94m2816[39m in [92mcompile[39m       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   2813 │   │   [96mself[39m._executable = MeshExecutable.from_trivial_jaxpr(                       [31m│
+[31m│[39m   2814 │   │   │   **[96mself[39m.compile_args)                                                    [31m│
+[31m│[39m   2815 │     [94melse[39m:                                                                         [31m│
+[31m│[39m [31m❱ [39m2816 │   │   [96mself[39m._executable = UnloadedMeshExecutable.from_hlo(                         [31m│
+[31m│[39m   2817 │   │   │   [96mself[39m._name,                                                             [31m│
+[31m│[39m   2818 │   │   │   [96mself[39m._hlo,                                                              [31m│
+[31m│[39m   2819 │   │   │   **[96mself[39m.compile_args,                                                    [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/interpreters/[1mpxla.py[22m:[94m3028[39m in [92mfrom_hlo[39m      [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   3025 │     [94mwith[39m dispatch.log_elapsed_time([33mf"Finished XLA compilation of {[39mname[33m} "[39m         [31m│
+[31m│[39m   3026 │   │   │   │   │   │   │   │   │    [33m"in {elapsed_time} sec"[39m,                       [31m│
+[31m│[39m   3027 │   │   │   │   │   │   │   │   │    event=dispatch.BACKEND_COMPILE_EVENT):         [31m│
+[31m│[39m [31m❱ [39m3028 │   │   xla_executable = dispatch.compile_or_get_cached(                            [31m│
+[31m│[39m   3029 │   │   │   backend, computation, compile_options, host_callbacks)                  [31m│
+[31m│[39m   3030 │                                                                                   [31m│
+[31m│[39m   3031 │     [94mif[39m auto_spmd_lowering:                                                        [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/[1mdispatch.py[22m:[94m526[39m in [92mcompile_or_get_cached[39m   [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   523 │   │   │   │      compile_options, backend, compiled, host_callbacks)               [31m│
+[31m│[39m   524 │     [94mreturn[39m compiled                                                                [31m│
+[31m│[39m   525                                                                                      [31m│
+[31m│[39m [31m❱ [39m526   [94mreturn[39m backend_compile(backend, serialized_computation, compile_options,           [31m│
+[31m│[39m   527 │   │   │   │   │   │    host_callbacks)                                             [31m│
+[31m│[39m   528                                                                                      [31m│
+[31m│[39m   529                                                                                      [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/[1mprofiler.py[22m:[94m314[39m in [92mwrapper[39m                 [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   311   [1m@wraps[22m(func)                                                                       [31m│
+[31m│[39m   312   [94mdef[39m [92mwrapper[39m(*args, **kwargs):                                                      [31m│
+[31m│[39m   313 │   [94mwith[39m TraceAnnotation(name, **decorator_kwargs):                                  [31m│
+[31m│[39m [31m❱ [39m314 │     [94mreturn[39m func(*args, **kwargs)                                                   [31m│
+[31m│[39m   315 │   [94mreturn[39m wrapper                                                                   [31m│
+[31m│[39m   316   [94mreturn[39m wrapper                                                                     [31m│
+[31m│[39m   317                                                                                      [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/jax/_src/[1mdispatch.py[22m:[94m471[39m in [92mbackend_compile[39m         [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   468   # Some backends don't have `host_callbacks` option yet                             [31m│
+[31m│[39m   469   # TODO(sharadmv): remove this fallback when all backends allow `compile`           [31m│
+[31m│[39m   470   # to take in `host_callbacks`                                                      [31m│
+[31m│[39m [31m❱ [39m471   [94mreturn[39m backend.compile(built_c, compile_options=options)                           [31m│
+[31m│[39m   472                                                                                      [31m│
+[31m│[39m   473 _ir_dump_counter = itertools.count()                                                 [31m│
+[31m│[39m   474                                                                                      [31m│
+[31m╰────────────────────────────────────────────────────────────────────────────────────────────╯
+[1mKeyboardInterrupt

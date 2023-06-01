@@ -60,4 +60,8 @@ RUN pip3 install numpy cloudpickle ruamel.yaml rich zmq msgpack
 COPY . /embodied
 RUN chown -R 1000:root /embodied && chmod -R 775 /embodied
 
+# Wandb and its dependencies
+RUN pip3 install wandb
+RUN pip3 install moviepy imageio 
+
 WORKDIR embodied

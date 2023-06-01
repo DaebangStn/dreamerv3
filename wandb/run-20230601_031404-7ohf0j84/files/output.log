@@ -1,0 +1,250 @@
+Encoder CNN shapes: {'image': (64, 64, 3)}
+Encoder MLP shapes: {}
+Decoder CNN shapes: {'image': (64, 64, 3)}
+Decoder MLP shapes: {}
+JAX devices (1): [StreamExecutorGpuDevice(id=0, process_index=0, slice_index=0)]
+Policy devices: gpu:0
+Train devices:  gpu:0
+Tracing train function.
+Optimizer model_opt has 32,468,675 variables.
+Optimizer actor_opt has 2,144,657 variables.
+Optimizer critic_opt has 2,297,215 variables.
+Logdir /root/logdir/run1
+Observation space:
+  image            Space(dtype=uint8, shape=(64, 64, 3), low=0, high=255)
+  reward           Space(dtype=float32, shape=(), low=-inf, high=inf)
+  is_first         Space(dtype=bool, shape=(), low=False, high=True)
+  is_last          Space(dtype=bool, shape=(), low=False, high=True)
+  is_terminal      Space(dtype=bool, shape=(), low=False, high=True)
+Action space:
+  action           Space(dtype=float32, shape=(17,), low=0, high=1)
+  reset            Space(dtype=bool, shape=(), low=False, high=True)
+Prefill train dataset.
+Found existing checkpoint.
+Loading checkpoint: /root/logdir/run1/checkpoint.ckpt
+Loaded checkpoint from 2201 seconds ago.
+Start training loop.
+Tracing policy function.
+Tracing policy function.
+Tracing train function.
+Tracing report function.
+Tracing report function.
+[92m───────────────────────────────────────── [39m[1mStep 1101[92m[22m ──────────────────────────────────────────
+train/action_mag [1m16[22m [34m/[39m train/action_max [1m16[22m [34m/[39m train/action_mean [1m7.99[22m [34m/[39m train/action_min [1m0[22m [34m/
+train/action_std [1m5.06[22m [34m/[39m train/actor_opt_actor_opt_grad_overflow [1m0[22m [34m/
+train/actor_opt_actor_opt_grad_scale [1m1e4[22m [34m/[39m train/actor_opt_grad_norm [1m1.9e-4[22m [34m/
+train/actor_opt_grad_steps [1m1[22m [34m/[39m train/actor_opt_loss [1m-2.47[22m [34m/[39m train/adv_mag [1m0[22m [34m/[39m train/adv_max [1m0
+[34m/[39m train/adv_mean [1m0[22m [34m/[39m train/adv_min [1m0[22m [34m/[39m train/adv_std [1m0[22m [34m/[39m train/cont_avg [1m0.99[22m [34m/
+train/cont_loss_mean [1m0.62[22m [34m/[39m train/cont_loss_std [1m0.29[22m [34m/[39m train/cont_neg_acc [1m0.43[22m [34m/
+train/cont_neg_loss [1m0.9[22m [34m/[39m train/cont_pos_acc [1m0.66[22m [34m/[39m train/cont_pos_loss [1m0.62[22m [34m/[39m train/cont_pred
+[1m0.56[22m [34m/[39m train/cont_rate [1m0.99[22m [34m/[39m train/dyn_loss_mean [1m7.95[22m [34m/[39m train/dyn_loss_std [1m0.33[22m [34m/
+train/extr_critic_critic_opt_critic_opt_grad_overflow [1m0[22m [34m/
+train/extr_critic_critic_opt_critic_opt_grad_scale [1m1e4[22m [34m/
+train/extr_critic_critic_opt_grad_norm [1m6.13[22m [34m/[39m train/extr_critic_critic_opt_grad_steps [1m1[22m [34m/
+train/extr_critic_critic_opt_loss [1m3.5e4[22m [34m/[39m train/extr_critic_mag [1m0[22m [34m/[39m train/extr_critic_max [1m0[22m [34m/
+train/extr_critic_mean [1m0[22m [34m/[39m train/extr_critic_min [1m0[22m [34m/[39m train/extr_critic_std [1m0[22m [34m/
+train/extr_return_normed_mag [1m0[22m [34m/[39m train/extr_return_normed_max [1m0[22m [34m/
+train/extr_return_normed_mean [1m0[22m [34m/[39m train/extr_return_normed_min [1m0[22m [34m/
+train/extr_return_normed_std [1m0[22m [34m/[39m train/extr_return_rate [1m0[22m [34m/[39m train/extr_return_raw_mag [1m0[22m [34m/
+train/extr_return_raw_max [1m0[22m [34m/[39m train/extr_return_raw_mean [1m0[22m [34m/[39m train/extr_return_raw_min [1m0[22m [34m/
+train/extr_return_raw_std [1m0[22m [34m/[39m train/extr_reward_mag [1m0[22m [34m/[39m train/extr_reward_max [1m0[22m [34m/
+train/extr_reward_mean [1m0[22m [34m/[39m train/extr_reward_min [1m0[22m [34m/[39m train/extr_reward_std [1m0[22m [34m/
+train/image_loss_mean [1m3473.59[22m [34m/[39m train/image_loss_std [1m201.55[22m [34m/[39m train/model_loss_mean [1m3484.52[22m [34m/
+train/model_loss_std [1m201.56[22m [34m/[39m train/model_opt_grad_norm nan [34m/[39m train/model_opt_grad_steps [1m0[22m [34m/
+train/model_opt_loss [1m3.5e7[22m [34m/[39m train/model_opt_model_opt_grad_overflow [1m1[22m [34m/
+train/model_opt_model_opt_grad_scale [1m5000[22m [34m/[39m train/policy_entropy_mag [1m2.79[22m [34m/
+train/policy_entropy_max [1m2.79[22m [34m/[39m train/policy_entropy_mean [1m2.6[22m [34m/[39m train/policy_entropy_min [1m1.82
+[34m/[39m train/policy_entropy_std [1m0.1[22m [34m/[39m train/policy_logprob_mag [1m5.45[22m [34m/[39m train/policy_logprob_max
+[1m-0.62[22m [34m/[39m train/policy_logprob_mean [1m-2.6[22m [34m/[39m train/policy_logprob_min [1m-5.45[22m [34m/
+train/policy_logprob_std [1m0.68[22m [34m/[39m train/policy_randomness_mag [1m0.99[22m [34m/[39m train/policy_randomness_max
+[1m0.99[22m [34m/[39m train/policy_randomness_mean [1m0.92[22m [34m/[39m train/policy_randomness_min [1m0.64[22m [34m/
+train/policy_randomness_std [1m0.03[22m [34m/[39m train/post_ent_mag [1m107.37[22m [34m/[39m train/post_ent_max [1m107.37[22m [34m/
+train/post_ent_mean [1m106.96[22m [34m/[39m train/post_ent_min [1m106.49[22m [34m/[39m train/post_ent_std [1m0.15[22m [34m/
+train/prior_ent_mag [1m107.69[22m [34m/[39m train/prior_ent_max [1m107.69[22m [34m/[39m train/prior_ent_mean [1m106.87[22m [34m/
+train/prior_ent_min [1m106.01[22m [34m/[39m train/prior_ent_std [1m0.25[22m [34m/[39m train/rep_loss_mean [1m7.95[22m [34m/
+train/rep_loss_std [1m0.33[22m [34m/[39m train/reward_avg [1m2.1e-3[22m [34m/[39m train/reward_loss_mean [1m5.54[22m [34m/
+train/reward_loss_std [1m9.5e-7[22m [34m/[39m train/reward_max_data [1m1[22m [34m/[39m train/reward_max_pred [1m0[22m [34m/
+train/reward_neg_acc [1m1[22m [34m/[39m train/reward_neg_loss [1m5.54[22m [34m/[39m train/reward_pos_acc [1m0[22m [34m/
+train/reward_pos_loss [1m5.54[22m [34m/[39m train/reward_pred [1m0[22m [34m/[39m train/reward_rate [1m7.8e-3[22m [34m/
+train/params_agent/wm/model_opt [1m3.2e7[22m [34m/[39m train/params_agent/task_behavior/critic/critic_opt
+[1m2.3e6[22m [34m/[39m train/params_agent/task_behavior/ac/actor_opt [1m2.1e6[22m [34m/[39m replay/size [1m2.4e4[22m [34m/
+replay/inserts [1m0[22m [34m/[39m replay/samples [1m112[22m [34m/[39m replay/insert_wait_avg nan [34m/[39m replay/insert_wait_frac
+nan [34m/[39m replay/sample_wait_avg [1m6e-7[22m [34m/[39m replay/sample_wait_frac [1m1[22m [34m/[39m timer/duration [1m35.1[22m [34m/
+timer/logger.write_count [1m1[22m [34m/[39m timer/logger.write_total [1m2.1e-6[22m [34m/[39m timer/logger.write_frac [1m6.1e-8
+[34m/[39m timer/logger.write_avg [1m2.1e-6[22m [34m/[39m timer/logger.write_min [1m2.1e-6[22m [34m/[39m timer/logger.write_max
+[1m2.1e-6[22m [34m/[39m timer/replay.add_count [1m1.2e4[22m [34m/[39m timer/replay.add_total [1m0.13[22m [34m/[39m timer/replay.add_frac
+[1m3.6e-3[22m [34m/[39m timer/replay.add_avg [1m1e-5[22m [34m/[39m timer/replay.add_min [1m2.9e-6[22m [34m/[39m timer/replay.add_max [1m8.2e-4
+[34m/[39m timer/checkpoint.load_count [1m1[22m [34m/[39m timer/checkpoint.load_total [1m0.62[22m [34m/
+timer/checkpoint.load_frac [1m0.02[22m [34m/[39m timer/checkpoint.load_avg [1m0.62[22m [34m/[39m timer/checkpoint.load_min
+[1m0.62[22m [34m/[39m timer/checkpoint.load_max [1m0.62[22m [34m/[39m timer/env.step_count [1m1[22m [34m/[39m timer/env.step_total [1m0.82[22m [34m/
+timer/env.step_frac [1m0.02[22m [34m/[39m timer/env.step_avg [1m0.82[22m [34m/[39m timer/env.step_min [1m0.82[22m [34m/
+timer/env.step_max [1m0.82[22m [34m/[39m timer/agent.policy_count [1m1[22m [34m/[39m timer/agent.policy_total [1m2.09[22m [34m/
+timer/agent.policy_frac [1m0.06[22m [34m/[39m timer/agent.policy_avg [1m2.09[22m [34m/[39m timer/agent.policy_min [1m2.09[22m [34m/
+timer/agent.policy_max [1m2.09[22m [34m/[39m timer/dataset_count [1m1[22m [34m/[39m timer/dataset_total [1m1.6e-5[22m [34m/
+timer/dataset_frac [1m4.6e-7[22m [34m/[39m timer/dataset_avg [1m1.6e-5[22m [34m/[39m timer/dataset_min [1m1.6e-5[22m [34m/
+timer/dataset_max [1m1.6e-5[22m [34m/[39m timer/agent.train_count [1m1[22m [34m/[39m timer/agent.train_total [1m26.37[22m [34m/
+timer/agent.train_frac [1m0.75[22m [34m/[39m timer/agent.train_avg [1m26.37[22m [34m/[39m timer/agent.train_min [1m26.37[22m [34m/
+timer/agent.train_max [1m26.37[22m [34m/[39m timer/agent.report_count [1m1[22m [34m/[39m timer/agent.report_total [1m5.19[22m [34m/
+timer/agent.report_frac [1m0.15[22m [34m/[39m timer/agent.report_avg [1m5.19[22m [34m/[39m timer/agent.report_min [1m5.19[22m [34m/
+timer/agent.report_max [1m5.19
+Creating new TensorBoard event file writer.
+[34m[1mwandb[39m[22m: [32m[41mERROR[39m[49m wandb.Video requires moviepy and imageio when passing raw data.  Install with "pip install moviepy imageio"
+Traceback (most recent call last):
+  File "example.py", line 53, in <module>
+    main()
+  File "example.py", line 48, in main
+    embodied.run.train(agent, env, replay, logger, args)
+  File "/embodied/dreamerv3/embodied/run/train.py", line 108, in train
+    driver(policy, steps=100)
+  File "/embodied/dreamerv3/embodied/core/driver.py", line 42, in __call__
+    step, episode = self._step(policy, step, episode)
+  File "/embodied/dreamerv3/embodied/core/driver.py", line 65, in _step
+    [fn(trn, i, **self._kwargs) for fn in self._on_steps]
+  File "/embodied/dreamerv3/embodied/core/driver.py", line 65, in <listcomp>
+    [fn(trn, i, **self._kwargs) for fn in self._on_steps]
+  File "/embodied/dreamerv3/embodied/run/train.py", line 91, in train_step
+    logger.write(fps=True)
+  File "/usr/lib/python3.8/contextlib.py", line 75, in inner
+    return func(*args, **kwds)
+  File "/embodied/dreamerv3/embodied/core/logger.py", line 53, in write
+    output(tuple(self._metrics))
+  File "/embodied/dreamerv3/embodied/core/logger.py", line 266, in __call__
+    bystep[step][name] = wandb.Video(value)
+  File "/usr/local/lib/python3.8/dist-packages/wandb/sdk/data_types/video.py", line 127, in __init__
+    self.encode()
+  File "/usr/local/lib/python3.8/dist-packages/wandb/sdk/data_types/video.py", line 130, in encode
+    mpy = util.get_module(
+  File "/usr/local/lib/python3.8/dist-packages/wandb/util.py", line 228, in get_module
+    raise wandb.Error(required)
+wandb.errors.Error: wandb.Video requires moviepy and imageio when passing raw data.  Install with "pip install moviepy imageio"
+[31m╭──────────────────────────── [39m[1mTraceback (most recent call last)[31m[22m ─────────────────────────────╮
+[31m│[39m /embodied/[1mexample.py[22m:[94m53[39m in [92m<module>[39m                                                        [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   50                                                                                       [31m│
+[31m│[39m   51                                                                                       [31m│
+[31m│[39m   52 [94mif[39m [91m__name__[39m == [33m'__main__'[39m:                                                            [31m│
+[31m│[39m [31m❱ [39m53   main()                                                                              [31m│
+[31m│[39m   54                                                                                       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/[1mexample.py[22m:[94m48[39m in [92mmain[39m                                                            [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   45   args = embodied.Config(                                                             [31m│
+[31m│[39m   46 │     **config.run, logdir=config.logdir,                                             [31m│
+[31m│[39m   47 │     batch_steps=config.batch_size * config.batch_length)                            [31m│
+[31m│[39m [31m❱ [39m48   embodied.run.train(agent, env, replay, logger, args)                                [31m│
+[31m│[39m   49   # embodied.run.eval_only(agent, env, logger, args)                                  [31m│
+[31m│[39m   50                                                                                       [31m│
+[31m│[39m   51                                                                                       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/run/[1mtrain.py[22m:[94m108[39m in [92mtrain[39m                                     [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   105   policy = [94mlambda[39m *args: agent.policy(                                               [31m│
+[31m│[39m   106 │     *args, mode=[33m'explore'[39m [94mif[39m should_expl(step) [94melse[39m [33m'train'[39m)                       [31m│
+[31m│[39m   107   [94mwhile[39m step < args.steps:                                                           [31m│
+[31m│[39m [31m❱ [39m108 │   driver(policy, steps=[94m100[39m)                                                        [31m│
+[31m│[39m   109 │   [94mif[39m should_save(step):                                                            [31m│
+[31m│[39m   110 │     checkpoint.save()                                                              [31m│
+[31m│[39m   111   logger.write()                                                                     [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/core/[1mdriver.py[22m:[94m42[39m in [92m__call__[39m                                 [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   39   [94mdef[39m [92m__call__[39m([96mself[39m, policy, steps=[94m0[39m, episodes=[94m0[39m):                                    [31m│
+[31m│[39m   40 │   step, episode = [94m0[39m, [94m0[39m                                                              [31m│
+[31m│[39m   41 │   [94mwhile[39m step < steps [95mor[39m episode < episodes:                                         [31m│
+[31m│[39m [31m❱ [39m42 │     step, episode = [96mself[39m._step(policy, step, episode)                               [31m│
+[31m│[39m   43                                                                                       [31m│
+[31m│[39m   44   [94mdef[39m [92m_step[39m([96mself[39m, policy, step, episode):                                             [31m│
+[31m│[39m   45 │   [94massert[39m [96mall[39m([96mlen[39m(x) == [96mlen[39m([96mself[39m._env) [94mfor[39m x [95min[39m [96mself[39m._acts.values())                 [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/core/[1mdriver.py[22m:[94m65[39m in [92m_step[39m                                    [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   62 │   [94mfor[39m i [95min[39m [96mrange[39m([96mlen[39m([96mself[39m._env)):                                                   [31m│
+[31m│[39m   63 │     trn = {k: v[i] [94mfor[39m k, v [95min[39m trns.items()}                                        [31m│
+[31m│[39m   64 │     [[96mself[39m._eps[i][k].append(v) [94mfor[39m k, v [95min[39m trn.items()]                             [31m│
+[31m│[39m [31m❱ [39m65 │     [fn(trn, i, **[96mself[39m._kwargs) [94mfor[39m fn [95min[39m [96mself[39m._on_steps]                           [31m│
+[31m│[39m   66 │     step += [94m1[39m                                                                       [31m│
+[31m│[39m   67 │   [94mif[39m obs[[33m'is_last'[39m].any():                                                          [31m│
+[31m│[39m   68 │     [94mfor[39m i, done [95min[39m [96menumerate[39m(obs[[33m'is_last'[39m]):                                       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/core/[1mdriver.py[22m:[94m65[39m in [92m<listcomp>[39m                               [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   62 │   [94mfor[39m i [95min[39m [96mrange[39m([96mlen[39m([96mself[39m._env)):                                                   [31m│
+[31m│[39m   63 │     trn = {k: v[i] [94mfor[39m k, v [95min[39m trns.items()}                                        [31m│
+[31m│[39m   64 │     [[96mself[39m._eps[i][k].append(v) [94mfor[39m k, v [95min[39m trn.items()]                             [31m│
+[31m│[39m [31m❱ [39m65 │     [fn(trn, i, **[96mself[39m._kwargs) [94mfor[39m fn [95min[39m [96mself[39m._on_steps]                           [31m│
+[31m│[39m   66 │     step += [94m1[39m                                                                       [31m│
+[31m│[39m   67 │   [94mif[39m obs[[33m'is_last'[39m].any():                                                          [31m│
+[31m│[39m   68 │     [94mfor[39m i, done [95min[39m [96menumerate[39m(obs[[33m'is_last'[39m]):                                       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/run/[1mtrain.py[22m:[94m91[39m in [92mtrain_step[39m                                 [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m    88 │     logger.add(report, prefix=[33m'report'[39m)                                            [31m│
+[31m│[39m    89 │     logger.add(replay.stats, prefix=[33m'replay'[39m)                                      [31m│
+[31m│[39m    90 │     logger.add(timer.stats(), prefix=[33m'timer'[39m)                                      [31m│
+[31m│[39m [31m❱ [39m 91 │     logger.write(fps=[94mTrue[39m)                                                         [31m│
+[31m│[39m    92   driver.on_step(train_step)                                                         [31m│
+[31m│[39m    93                                                                                      [31m│
+[31m│[39m    94   checkpoint = embodied.Checkpoint(logdir / [33m'checkpoint.ckpt'[39m)                       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/lib/python3.8/[1mcontextlib.py[22m:[94m75[39m in [92minner[39m                                               [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m    72 │   │   [1m@wraps[22m(func)                                                                 [31m│
+[31m│[39m    73 │   │   [94mdef[39m [92minner[39m(*args, **kwds):                                                    [31m│
+[31m│[39m    74 │   │   │   [94mwith[39m [96mself[39m._recreate_cm():                                                [31m│
+[31m│[39m [31m❱ [39m 75 │   │   │   │   [94mreturn[39m func(*args, **kwds)                                           [31m│
+[31m│[39m    76 │   │   [94mreturn[39m inner                                                                 [31m│
+[31m│[39m    77                                                                                      [31m│
+[31m│[39m    78                                                                                      [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/core/[1mlogger.py[22m:[94m53[39m in [92mwrite[39m                                    [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m    50 │   [94mif[39m [95mnot[39m [96mself[39m._metrics:                                                            [31m│
+[31m│[39m    51 │     [94mreturn[39m                                                                         [31m│
+[31m│[39m    52 │   [94mfor[39m output [95min[39m [96mself[39m.outputs:                                                      [31m│
+[31m│[39m [31m❱ [39m 53 │     output([96mtuple[39m([96mself[39m._metrics))                                                   [31m│
+[31m│[39m    54 │   [96mself[39m._metrics.clear()                                                            [31m│
+[31m│[39m    55                                                                                      [31m│
+[31m│[39m    56   [94mdef[39m [92m_compute_fps[39m([96mself[39m):                                                            [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /embodied/dreamerv3/embodied/core/[1mlogger.py[22m:[94m266[39m in [92m__call__[39m                                [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   263 │   │   # If the video is a float, convert it to uint8                               [31m│
+[31m│[39m   264 │   │   [94mif[39m np.issubdtype(value.dtype, np.floating):                                  [31m│
+[31m│[39m   265 │   │     value = np.clip([94m255[39m * value, [94m0[39m, [94m255[39m).astype(np.uint8)                      [31m│
+[31m│[39m [31m❱ [39m266 │   │   bystep[step][name] = wandb.Video(value)                                      [31m│
+[31m│[39m   267 │                                                                                    [31m│
+[31m│[39m   268 │   [94mfor[39m step, metrics [95min[39m bystep.items():                                             [31m│
+[31m│[39m   269 │     [96mself[39m._wandb.log(metrics, step=step)                                            [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/wandb/sdk/data_types/[1mvideo.py[22m:[94m127[39m in [92m__init__[39m       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   124 │   │   │   │   [94mraise[39m [96mValueError[39m(                                                    [31m│
+[31m│[39m   125 │   │   │   │   │   [33m"wandb.Video accepts a file path or numpy like data as input"[39m    [31m│
+[31m│[39m   126 │   │   │   │   )                                                                    [31m│
+[31m│[39m [31m❱ [39m127 │   │   │   [96mself[39m.encode()                                                            [31m│
+[31m│[39m   128 │                                                                                    [31m│
+[31m│[39m   129 │   [94mdef[39m [92mencode[39m([96mself[39m) -> [94mNone[39m:                                                        [31m│
+[31m│[39m   130 │   │   mpy = util.get_module(                                                       [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/wandb/sdk/data_types/[1mvideo.py[22m:[94m130[39m in [92mencode[39m         [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m   127 │   │   │   [96mself[39m.encode()                                                            [31m│
+[31m│[39m   128 │                                                                                    [31m│
+[31m│[39m   129 │   [94mdef[39m [92mencode[39m([96mself[39m) -> [94mNone[39m:                                                        [31m│
+[31m│[39m [31m❱ [39m130 │   │   mpy = util.get_module(                                                       [31m│
+[31m│[39m   131 │   │   │   [33m"moviepy.editor"[39m,                                                        [31m│
+[31m│[39m   132 │   │   │   required=[33m'wandb.Video requires moviepy and imageio when passing raw data[39m [31m│
+[31m│[39m   133 │   │   )                                                                            [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m /usr/local/lib/python3.8/dist-packages/wandb/[1mutil.py[22m:[94m228[39m in [92mget_module[39m                     [31m│
+[31m│[39m                                                                                            [31m│
+[31m│[39m    225 │   │   │   [94mif[39m required:                                                            [31m│
+[31m│[39m    226 │   │   │   │   logger.exception(msg)                                               [31m│
+[31m│[39m    227 │   [94mif[39m required [95mand[39m name [95min[39m _not_importable:                                        [31m│
+[31m│[39m [31m❱ [39m 228 │   │   [94mraise[39m wandb.Error(required)                                                 [31m│
+[31m│[39m    229                                                                                     [31m│
+[31m│[39m    230                                                                                     [31m│
+[31m│[39m    231 [94mdef[39m [92mget_optional_module[39m(name) -> Optional[[33m"importlib.ModuleInterface"[39m]:  # type: ig [31m│
+[31m╰────────────────────────────────────────────────────────────────────────────────────────────╯
+[1mError: [22mwandb.Video requires moviepy and imageio when passing raw data.  Install with [32m"pip 
+[32minstall moviepy imageio"
