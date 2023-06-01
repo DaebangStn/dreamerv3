@@ -62,6 +62,7 @@ RUN chown -R 1000:root /embodied && chmod -R 775 /embodied
 
 # Wandb and its dependencies
 RUN pip3 install wandb
-RUN pip3 install moviepy imageio 
+RUN pip3 install moviepy imageio
+RUN wandb login
 
 WORKDIR embodied
