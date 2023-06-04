@@ -1,4 +1,4 @@
-`def main():
+def main():
 
   import warnings
   import dreamerv3

@@ -1,5 +1,3 @@
-import embodied
-
 def main():
 
   import warnings
@@ -40,16 +38,10 @@ def main():
 
   args = embodied.Config(
       **config.run, logdir=config.logdir,
-      batch_steps=config.batch_size * config.batch_length)
+      batch_steps=config.batch_size * config.batch_length).update({'from_checkpoint': '/root/logdir/run1/checkpoint.ckpt'})
 
-  checkpoint = embodied.Checkpoint('~/logdir/run1/checkpoint.ckpt')
-  checkpoint.load_or_save()
-  if args.from_checkpoint:
-    checkpoint.load(args.from_checkpoint)
-
-  agent = checkpoint.agent
+  agent = dreamerv3.Agent(env.obs_space, env.act_space, step, config)
   embodied.run.eval_only(agent, env, logger, args)
-
 
 if __name__ == '__main__':
   main()

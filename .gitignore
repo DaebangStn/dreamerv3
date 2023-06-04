@@ -1,5 +1,6 @@
 .pytest_cache
 .idea
+*.swp
 dist
 __pycache__/
 *.py[cod]
