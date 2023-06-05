@@ -3,6 +3,7 @@
 *.swp
 dist
 __pycache__/
+logdir/
 *.py[cod]
 *.egg-info
 MUJOCO_LOG.TXT

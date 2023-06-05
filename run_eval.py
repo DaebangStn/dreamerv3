@@ -9,7 +9,7 @@ def main():
   config = embodied.Config(dreamerv3.configs['defaults'])
   config = config.update(dreamerv3.configs['medium'])
   config = config.update({
-      'logdir': '~/logdir/run2',
+      'logdir': '~/dreamerv3/logdir/run2',
       'run.log_every': 30,  # Seconds
       'batch_size': 1,
       'jax.prealloc': False,
@@ -17,6 +17,7 @@ def main():
       'decoder.mlp_keys': '$^',
       'encoder.cnn_keys': 'image',
       'decoder.cnn_keys': 'image',
+      # 'jax.platform': 'cpu',
   })
   config = embodied.Flags(config).parse()
 
@@ -29,16 +30,16 @@ def main():
       embodied.logger.WandBOutput(r'.*', logdir, config),
   ])
 
-  import crafter
+  from embodied.envs.crafter import Crafter
   from embodied.envs import from_gym
-  env = crafter.Env()  # Replace this with your Gym env.
-  env = from_gym.FromGym(env, obs_key='image')  # Or obs_key='vector'.
+  env = Crafter(task='reward', outdir='~/dreamerv3/logdir/run2')  # Replace this with your Gym env.
+  env = from_gym.FromGym(env._env, obs_key='image')  # Or obs_key='vector'.
   env = dreamerv3.wrap_env(env, config)
   env = embodied.BatchEnv([env], parallel=False)
 
   args = embodied.Config(
       **config.run, logdir=config.logdir,
-      batch_steps=config.batch_size * config.batch_length).update({'from_checkpoint': '/root/logdir/run1/checkpoint.ckpt'})
+      batch_steps=config.batch_size * config.batch_length).update({'from_checkpoint': '/home/geon/dreamerv3/logdir/run1/checkpoint.ckpt'})
 
   agent = dreamerv3.Agent(env.obs_space, env.act_space, step, config)
   embodied.run.eval_only(agent, env, logger, args)

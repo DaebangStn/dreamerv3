@@ -13,8 +13,8 @@ class Crafter(embodied.Env):
       self._env = crafter.Recorder(
           self._env, outdir,
           save_stats=True,
-          save_video=False,
-          save_episode=False,
+          save_video=True,
+          save_episode=True,
       )
     self._achievements = crafter.constants.achievements.copy()
     self._done = True
