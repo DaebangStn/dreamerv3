@@ -17,7 +17,7 @@ def main():
       'decoder.mlp_keys': '$^',
       'encoder.cnn_keys': 'image',
       'decoder.cnn_keys': 'image',
-      # 'jax.platform': 'cpu',
+      'jax.platform': 'cpu',
   })
   config = embodied.Flags(config).parse()
 
