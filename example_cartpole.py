@@ -8,15 +8,15 @@ def main():
   # See configs.yaml for all options.
   config = embodied.Config(dreamerv3.configs['defaults'])
   config = config.update(dreamerv3.configs['small'])
-  config = config.update(dreamerv3.configs['atari'])
+  config = config.update(dreamerv3.configs['bsuite'])
   config = config.update({
-      'logdir': '~/dreamerv3/logdir/run4',
+      'logdir': '~/dreamerv3/logdir/run',
       'run.train_ratio': 64,
       'run.log_every': 30,  # Seconds
       'batch_size': 16,
       'jax.prealloc': False,
-      'encoder.mlp_keys': '$^',
-      'decoder.mlp_keys': '$^',
+      'encoder.mlp_keys': 'vector',
+      'decoder.mlp_keys': 'vector',
       'encoder.cnn_keys': 'image',
       'decoder.cnn_keys': 'image',
       'jax.platform': 'cpu',
@@ -33,12 +33,11 @@ def main():
       # embodied.logger.MLFlowOutput(logdir.name),
   ])
 
+  # run dreamerv3 on cartpole environment
   import gym
-  from gym.wrappers import ResizeObservation
   from embodied.envs import from_gym
-  env = gym.make('Breakout-v4')
-  env = ResizeObservation(env, 64)
-  env = from_gym.FromGym(env, obs_key='image')  # Or obs_key='vector', 'image'
+  env = gym.make('CartPole-v0')
+  env = from_gym.FromGym(env, obs_key='vector')  # Or obs_key='vector', 'image'
   env = dreamerv3.wrap_env(env, config)
   env = embodied.BatchEnv([env], parallel=False)
 
