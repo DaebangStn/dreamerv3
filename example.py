@@ -10,7 +10,7 @@ def main():
   config = config.update(dreamerv3.configs['small'])
   config = config.update(dreamerv3.configs['atari'])
   config = config.update({
-      'logdir': '~/dreamerv3/logdir/run5',
+      'logdir': '~/dreamerv3/logdir/run5', # you have to change dir when setting is changed
       'run.train_ratio': 64,
       'run.log_every': 60,  # Seconds
       'batch_size': 16,
