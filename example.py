@@ -10,16 +10,16 @@ def main():
   config = config.update(dreamerv3.configs['small'])
   config = config.update(dreamerv3.configs['atari'])
   config = config.update({
-      'logdir': '~/dreamerv3/logdir/run3',
+      'logdir': '~/dreamerv3/logdir/run5',
       'run.train_ratio': 64,
-      'run.log_every': 30,  # Seconds
+      'run.log_every': 60,  # Seconds
       'batch_size': 16,
       'jax.prealloc': False,
       'encoder.mlp_keys': '$^',
       'decoder.mlp_keys': '$^',
       'encoder.cnn_keys': 'image',
       'decoder.cnn_keys': 'image',
-      'jax.platform': 'cpu',
+      # 'jax.platform': 'cpu',
   })
   config = embodied.Flags(config).parse()
 
@@ -37,7 +37,7 @@ def main():
   from gym.wrappers import ResizeObservation
   from embodied.envs import from_gym
   env = gym.make('Breakout-v4')
-  env = ResizeObservation(env, 128)
+  env = ResizeObservation(env, 64)
   env = from_gym.FromGym(env, obs_key='image')  # Or obs_key='vector', 'image'
   env = dreamerv3.wrap_env(env, config)
   env = embodied.BatchEnv([env], parallel=False)
